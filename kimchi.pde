@@ -3,58 +3,65 @@ int pinI2 = 11;      // define I2 interface
 int pinI3 = 12;      // define I3 interface
 int pinI4 = 13;      // define I4 interface
 
-int speed = 127;     // define the speed of motor
+int speed = 100;     // define the speed of motor
 int speedpinA = 9;   // enable motor A
 int speedpinB = 10;  // enable motor B
 
 void setup() {
     pinMode(pinI1, OUTPUT);
     pinMode(pinI2, OUTPUT);
-    pinMode(speedpinA, OUTPUT);
     pinMode(pinI3, OUTPUT);
     pinMode(pinI4, OUTPUT);
+
+    pinMode(speedpinA, OUTPUT);
     pinMode(speedpinB, OUTPUT);
 }
 
-void forward() {
+void setSpeed(int speed) {
     analogWrite(speedpinA, speed);
     analogWrite(speedpinB, speed);
-    digitalWrite(pinI4, HIGH);
-    digitalWrite(pinI3, LOW);
-    digitalWrite(pinI2, LOW);
+}
+
+void forward() {
+    setSpeed(speed);
+
     digitalWrite(pinI1, HIGH);
+    digitalWrite(pinI2, LOW);
+    digitalWrite(pinI3, LOW);
+    digitalWrite(pinI4, HIGH);
 }
 
 void backward() {
-    analogWrite(speedpinA, speed);
-    analogWrite(speedpinB, speed);
-    digitalWrite(pinI4, LOW);
-    digitalWrite(pinI3, HIGH);
-    digitalWrite(pinI2, HIGH);
+    setSpeed(speed);
+
     digitalWrite(pinI1, LOW);
+    digitalWrite(pinI2, HIGH);
+    digitalWrite(pinI3, HIGH);
+    digitalWrite(pinI4, LOW);
 }
 
 void left() {
-    analogWrite(speedpinA, speed);
-    analogWrite(speedpinB, speed);
-    digitalWrite(pinI4, HIGH);
-    digitalWrite(pinI3, LOW);
-    digitalWrite(pinI2, HIGH);
+    setSpeed(speed);
+
     digitalWrite(pinI1, LOW);
+    digitalWrite(pinI2, HIGH);
+    digitalWrite(pinI3, LOW);
+    digitalWrite(pinI4, HIGH);
 }
 
 void right() {
-    analogWrite(speedpinA, speed);
-    analogWrite(speedpinB, speed);
-    digitalWrite(pinI4, LOW);
-    digitalWrite(pinI3, HIGH);
-    digitalWrite(pinI2, LOW);
+    setSpeed(speed);
+
     digitalWrite(pinI1, HIGH);
+    digitalWrite(pinI2, LOW);
+    digitalWrite(pinI3, HIGH);
+    digitalWrite(pinI4, LOW);
 }
 
 void stop() {
     digitalWrite(speedpinA, LOW);
     digitalWrite(speedpinB, LOW);
+
     delay(1000);
 }
 
@@ -78,5 +85,5 @@ void driveInCircle() {
 }
 
 void loop() {
-    // driveInCircle();
+    //driveInCircle();
 }
