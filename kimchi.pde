@@ -1,3 +1,14 @@
+/*
+ * See: http://seeedstudio.com/wiki/Motor_Shield_V1.0
+ *
+ * pin1 pin2 pin3 pin4
+ * --------------------
+ * 1    0    0    1    // forward
+ * 0    1    1    0    // reverse
+ * 0    1    0    1    // left
+ * 1    0    1    0    // right
+ */
+
 int pinI1 = 8;       // define I1 interface
 int pinI2 = 11;      // define I2 interface
 int pinI3 = 12;      // define I3 interface
@@ -31,7 +42,7 @@ void forward() {
     digitalWrite(pinI4, HIGH);
 }
 
-void backward() {
+void reverse() {
     setSpeed(speed);
 
     digitalWrite(pinI1, LOW);
@@ -40,7 +51,7 @@ void backward() {
     digitalWrite(pinI4, LOW);
 }
 
-void left() {
+void rotateLeft() {
     setSpeed(speed);
 
     digitalWrite(pinI1, LOW);
@@ -49,7 +60,7 @@ void left() {
     digitalWrite(pinI4, HIGH);
 }
 
-void right() {
+void rotateRight() {
     setSpeed(speed);
 
     digitalWrite(pinI1, HIGH);
@@ -65,13 +76,15 @@ void stop() {
     delay(1000);
 }
 
-
-void driveInCircle() {
-    left();
+/*
+ * Spins the rover clockwise, counterclockwise, forwards, and reverse.
+ */
+void testDrive() {
+    rotateLeft();
     delay(2000);
     stop();
 
-    right();
+    rotateRight();
     delay(2000);
     stop();
 
@@ -79,11 +92,11 @@ void driveInCircle() {
     delay(2000);
     stop();
 
-    backward();
+    reverse();
     delay(2000);
     stop();
 }
 
 void loop() {
-    driveInCircle();
+    testDrive();
 }
