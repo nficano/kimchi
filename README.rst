@@ -4,7 +4,7 @@
 Installation/Usage
 ==================
 
-Downlaod and install Ardiuno Makefile. To compile run:
+Download and install `Ardiuno Makefile <https://github.com/sudar/Arduino-Makefile>`_. To compile run:
 
 .. code:: bash
 
