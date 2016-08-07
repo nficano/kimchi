@@ -85,5 +85,5 @@ void driveInCircle() {
 }
 
 void loop() {
-    //driveInCircle();
+    driveInCircle();
 }
