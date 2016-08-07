@@ -1,6 +1,5 @@
-======
-kimchi
-======
+.. image:: https://s3.amazonaws.com/nf-assets/kimchi.svg
+  :alt: kimchi
 
 *kimchi* An experiment in Arduino robotics.
 
